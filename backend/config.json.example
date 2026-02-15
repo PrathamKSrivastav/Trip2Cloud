@@ -1,0 +1,8 @@
+{
+  "google_drive_root_link": "https://drive.google.com/drive/folders/YOUR_ID_HERE",
+  "local_source_path": "C:/Users/YourName/Pictures/Trip",
+  "preferences": {
+    "use_shortcuts_for_multi_collection": true,
+    "thumbnail_quality": 80
+  }
+}
