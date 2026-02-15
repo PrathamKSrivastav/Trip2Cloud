@@ -1,0 +1,40 @@
+# --- System / OS ---
+.DS_Store
+Thumbs.db
+*.log
+
+# --- Python / Backend ---
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+env/
+.env
+.pytest_cache/
+
+# --- Google OAuth Credentials (CRITICAL) ---
+# Do NOT share these or your app can be hijacked
+credentials.json
+token.json
+
+# --- Database & Local Metadata ---
+# We ignore the actual DB and Thumbnails so they don't bloat the repo
+backend/metadata/*.db
+backend/metadata/thumbnails/
+metadata/*.db
+metadata/thumbnails/
+
+# --- Node.js / Frontend ---
+node_modules/
+dist/
+dist-ssr/
+*.local
+.eslintcache
+
+# --- IDEs ---
+.vscode/
+.idea/
+*.swp
+*.swo
