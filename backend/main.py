@@ -37,6 +37,9 @@ class AssignRequest(BaseModel):
     file_id: int
     collection_id: int
 
+class CollectionCreate(BaseModel):
+    name: str
+
 # --- API ENDPOINTS ---
 
 @app.get("/media")
@@ -85,6 +88,19 @@ def assign_to_collection(request: AssignRequest, db: Session = Depends(database.
         file.collections.append(collection)
         db.commit()
     return {"message": f"Pinned {file.file_name} to {collection.name}"}
+
+@app.post("/collections")
+def create_collection(collection: CollectionCreate, db: Session = Depends(database.get_db)):
+    # Check if exists
+    existing = db.query(models.Collection).filter(models.Collection.name == collection.name).first()
+    if existing:
+        return existing
+    
+    new_col = models.Collection(name=collection.name)
+    db.add(new_col)
+    db.commit()
+    db.refresh(new_col)
+    return new_col
 
 @app.post("/collections/{collection_id}/sync")
 def sync_to_drive(collection_id: int, db: Session = Depends(database.get_db)):

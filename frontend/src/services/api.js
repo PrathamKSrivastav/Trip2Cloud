@@ -23,8 +23,21 @@ export const mediaService = {
   getThumbUrl: (hash) => `${API_BASE_URL}/thumbnails/${hash}.webp`,
 };
 
+// export const collectionService = {
+//   getCollections: () => apiClient.get('/collections'),
+  
+//   assignFile: (fileId, collectionId) => 
+//     apiClient.post('/assign', { file_id: fileId, collection_id: collectionId }),
+  
+//   syncToDrive: (collectionId) => 
+//     apiClient.post(`/collections/${collectionId}/sync`),
+// };
+
 export const collectionService = {
   getCollections: () => apiClient.get('/collections'),
+  
+  // ADD THIS LINE:
+  create: (name) => apiClient.post('/collections', { name }),
   
   assignFile: (fileId, collectionId) => 
     apiClient.post('/assign', { file_id: fileId, collection_id: collectionId }),
